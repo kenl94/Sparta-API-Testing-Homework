@@ -2,6 +2,8 @@ require 'httparty'
 require 'json'
 
 class Postcodesio
+
+
   include HTTParty
 
   base_uri 'https://api.postcodes.io'
@@ -14,4 +16,9 @@ class Postcodesio
     JSON.parse(self.class.post('/postcodes', body: { "postcodes" => postcodes_array}).body)
   end
 
+
 end
+
+checking = Postcodesio.new
+
+p checking.get_single_postcode("TW106TF")
